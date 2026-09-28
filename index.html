@@ -8,23 +8,23 @@
 
 <style>
 
-@font-face {
-    font-family: 'Ciutadella';
-    src: url('Ciutadella-Regular.woff2') format('woff2');
-    font-weight: 400;
+@font-face{
+    font-family:'Ciutadella';
+    src:url('Ciutadella-Regular.woff2') format('woff2');
+    font-weight:400;
 }
 
-@font-face {
-    font-family: 'Ciutadella';
-    src: url('Ciutadella-SemiBold.woff2') format('woff2');
-    font-weight: 600;
+@font-face{
+    font-family:'Ciutadella';
+    src:url('Ciutadella-SemiBold.woff2') format('woff2');
+    font-weight:600;
 }
 
 :root{
-    --morado:#942D83;
-    --naranja:#FF6600;
-    --gris:#555555;
-    --fondo:#ffffff;
+    --sjd-purple:#942D83;
+    --sjd-orange:#FF6600;
+    --sjd-dark:#333333;
+    --paper:#f8f5ef;
 }
 
 *{
@@ -33,12 +33,11 @@
     box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:white;
+    background:var(--paper);
     font-family:'Ciutadella',sans-serif;
 }
 
@@ -48,31 +47,28 @@ body{
 }
 
 .header{
-    height:170px;
-    background:#000;
+
+    height:120px;
+
+    background:white;
+
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    padding:20px 40px;
+    align-items:center;
+
+    padding:20px 50px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .logo{
-    height:100px;
+    height:70px;
 }
 
-.titulo{
-    color:white;
-    text-align:left;
-}
-
-.titulo h1{
-    font-size:52px;
+.all-day{
+    font-size:44px;
     font-weight:600;
-}
-
-.titulo p{
-    font-size:24px;
-    margin-top:5px;
+    color:var(--sjd-orange);
 }
 
 .main{
@@ -81,98 +77,119 @@ body{
     overflow:hidden;
 }
 
-.pagina{
+.slide{
+
     position:absolute;
     inset:0;
 
-    padding:40px;
+    padding:50px;
 
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-columns:60% 40%;
+
+    gap:40px;
 
     opacity:0;
     visibility:hidden;
+    transform:scale(1.02);
 
-    transition:opacity 1s ease;
-
-    background:white;
+    transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
 }
 
-.pagina.activa{
+.slide.active{
     opacity:1;
     visibility:visible;
+    transform:scale(1);
 }
 
-.categoria{
-    background:var(--naranja);
+.left{
+    display:flex;
+    flex-direction:column;
+}
+
+.right{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.category{
+
+    background:var(--sjd-orange);
     color:white;
 
-    font-size:42px;
-    font-weight:600;
-
-    text-align:center;
-
-    padding:16px;
+    padding:18px 25px;
 
     border-radius:14px;
 
-    margin-bottom:30px;
-}
-
-.categoria.morada{
-    background:var(--morado);
-}
-
-.lista{
-    flex:1;
-
-    display:grid;
-    grid-template-columns:1fr;
-    gap:14px;
-
-    align-content:start;
-}
-
-.item{
     font-size:42px;
-    color:#333;
-    text-align:center;
-    padding:8px;
+    font-weight:600;
+
+    margin-bottom:25px;
+}
+
+.category.purple{
+    background:var(--sjd-purple);
+}
+
+.items{
+    flex:1;
+}
+
+.row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #ddd;
+}
+
+.name{
+    font-size:34px;
+    color:var(--sjd-dark);
+}
+
+.price{
+    font-size:34px;
+    font-weight:600;
+    color:var(--sjd-purple);
+}
+
+.image-box{
+
+    width:100%;
+    height:100%;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:white;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.subtitle{
+    font-size:28px;
+    font-weight:600;
+    color:var(--sjd-purple);
+    margin:25px 0 10px;
 }
 
 .footer{
-    height:110px;
-
-    background:var(--naranja);
-
-    color:white;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:48px;
-    font-weight:600;
-    letter-spacing:4px;
-}
-
-.subcategoria{
-    font-size:34px;
-    font-weight:600;
-    color:var(--morado);
-    margin:15px 0;
-    text-align:center;
-}
-
-.doble{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.columna{
-    display:flex;
-    flex-direction:column;
+    height:60px;
+    background:var(--sjd-orange);
 }
 
 </style>
@@ -182,176 +199,181 @@ body{
 
 <div class="header">
 
-    <div class="titulo">
-        <h1>CAFETERIA PÚBLIC</h1>
-        <p>Hospital Sant Joan de Déu Barcelona</p>
-    </div>
+<JD MARCA.png
 
-    <img src="SJD TIU H-01.png
+<div class="all-day">
+ALL DAY
+</div>
 
 </div>
 
 <div class="main">
 
-    <!-- PANTALLA 1 -->
+<!-- ENTREPANS -->
 
-    <div class="pagina activa">
+<div class="slide active">
 
-        <div class="categoria">
-            ENTREPANS
-        </div>
+<div class="left">
 
-        <div class="lista">
+<div class="category">
+ENTREPANS
+</div>
 
-            <div class="item">Pernil</div>
-            <div class="item">Tonyina</div>
-            <div class="item">Formatge</div>
-            <div class="item">Llom</div>
-            <div class="item">Pernil dolç</div>
-            <div class="item">Tonyina, pebrot i olives</div>
-            <div class="item">Bacon</div>
-            <div class="item">Truita de patates</div>
-            <div class="item">Truita francesa</div>
-            <div class="item">Bikini</div>
-            <div class="item">Vegetal amb formatge fresc</div>
+<div class="items">
 
-        </div>
-
-    </div>
-
-    <!-- PANTALLA 2 -->
-
-    <div class="pagina">
-
-        <div class="categoria">
-            PER PICAR
-        </div>
-
-        <div class="lista">
-
-            <div class="item">Patates Chips</div>
-            <div class="item">Croquetes casolanes</div>
-            <div class="item">Pizza del dia</div>
-            <div class="item">Amanida del dia</div>
-
-        </div>
-
-        <div class="subcategoria">
-            EL RACÓ DOLÇ
-        </div>
-
-        <div class="lista">
-
-            <div class="item">Croissant</div>
-            <div class="item">Croissant de xocolata</div>
-            <div class="item">Ensaimada</div>
-            <div class="item">Ensaimada farcida</div>
-            <div class="item">Berlina glaçada</div>
-            <div class="item">Berlina de xocolata</div>
-
-        </div>
-
-    </div>
-
-    <!-- PANTALLA 3 -->
-
-    <div class="pagina">
-
-        <div class="categoria">
-            EL RACÓ DOLÇ
-        </div>
-
-        <div class="lista">
-
-            <div class="item">Mini brioxeria</div>
-            <div class="item">Mini brioxeria de xocolata</div>
-            <div class="item">Plum cake de plàtan i avellana</div>
-            <div class="item">Pastís de pastanaga</div>
-            <div class="item">Galeta del dia</div>
-            <div class="item">Cereals d'esmorzar</div>
-            <div class="item">Fruita tallada</div>
-            <div class="item">Gelat variat de la casa</div>
-
-        </div>
-
-        <div class="subcategoria">
-            BEGUDES
-        </div>
-
-        <div class="lista">
-
-            <div class="item">Aigua mineral</div>
-            <div class="item">Refresc</div>
-            <div class="item">Cervesa sense alcohol</div>
-            <div class="item">Sucs de fruita</div>
-
-        </div>
-
-    </div>
-
-    <!-- PANTALLA 4 -->
-
-    <div class="pagina">
-
-        <div class="categoria morada">
-            CAFÈS · TÈ · INFUSIONS
-        </div>
-
-        <div class="doble">
-
-            <div class="columna">
-
-                <div class="item">Cafè sol</div>
-                <div class="item">Cafè amb gel</div>
-                <div class="item">Tallat</div>
-                <div class="item">Cafè amb llet</div>
-                <div class="item">Cafè americà</div>
-                <div class="item">Got de llet</div>
-                <div class="item">Chai Latte</div>
-
-            </div>
-
-            <div class="columna">
-
-                <div class="item">Capuchino</div>
-                <div class="item">Latte Macchiato</div>
-                <div class="item">Earl Grey</div>
-                <div class="item">Gingebre</div>
-                <div class="item">Rooibos</div>
-                <div class="item">Menta</div>
-                <div class="item">Camamilla</div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="row"><span class="name">Pernil</span><span class="price">2,50€</span></div>
+<div class="row"><span class="name">Tonyina</span><span class="price">2,50€</span></div>
+<div class="row"><span class="name">Formatge</span><span class="price">2,50€</span></div>
+<div class="row"><span class="name">Llom</span><span class="price">3,70€</span></div>
+<div class="row"><span class="name">Pernil dolç</span><span class="price">3,20€</span></div>
+<div class="row"><span class="name">Tonyina, pebrot i olives</span><span class="price">4,70€</span></div>
+<div class="row"><span class="name">Bacon</span><span class="price">3,70€</span></div>
+<div class="row"><span class="name">Truita francesa</span><span class="price">3,40€</span></div>
+<div class="row"><span class="name">Bikini</span><span class="price">3,50€</span></div>
 
 </div>
 
-<div class="footer">
-    ALL DAY
 </div>
+
+<div class="right">
+
+<div class="image-box">
+<img src="https://picsum.photos/900iv>
+
+</div>
+
+</div>
+
+<!-- PER PICAR -->
+
+<div class="slide">
+
+<div class="left">
+
+<div class="category">
+PER PICAR
+</div>
+
+<div class="items">
+
+<div class="row"><span class="name">Patates Chips</span><span class="price">1,85€</span></div>
+<div class="row"><span class="name">Croquetes casolanes</span><span class="price">2,20€</span></div>
+<div class="row"><span class="name">Pizza del dia</span><span class="price">3,70€</span></div>
+<div class="row"><span class="name">Amanida del dia</span><span class="price">4,80€</span></div>
+
+<div class="subtitle">
+EL RACÓ DOLÇ
+</div>
+
+<div class="row"><span class="name">Croissant</span><span class="price">1,80€</span></div>
+<div class="row"><span class="name">Croissant xocolata</span><span class="price">2,10€</span></div>
+<div class="row"><span class="name">Ensaimada</span><span class="price">2,00€</span></div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="image-box">
+https://picsum.photos/900/700?2
+</div>
+
+</div>
+
+</div>
+
+<!-- BEGUDES -->
+
+<div class="slide">
+
+<div class="left">
+
+<div class="category">
+BEGUDES
+</div>
+
+<div class="items">
+
+<div class="row"><span class="name">Aigua mineral</span><span class="price">1,30€</span></div>
+<div class="row"><span class="name">Aigua amb gas</span><span class="price">1,80€</span></div>
+<div class="row"><span class="name">Refresc</span><span class="price">2,20€</span></div>
+<div class="row"><span class="name">Cervesa sense alcohol</span><span class="price">2,20€</span></div>
+<div class="row"><span class="name">Sucs de fruita</span><span class="price">2,20€</span></div>
+<div class="row"><span class="name">Cacaolat</span><span class="price">2,10€</span></div>
+<div class="row"><span class="name">Suc taronja natural</span><span class="price">3,10€</span></div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="image-box">
+https://picsum.photos/900/700?3
+</div>
+
+</div>
+
+</div>
+
+<!-- CAFES -->
+
+<div class="slide">
+
+<div class="left">
+
+<div class="category purple">
+CAFÈS · TÈ · INFUSIONS
+</div>
+
+<div class="items">
+
+<div class="row"><span class="name">Cafè sol</span><span class="price">1,50€</span></div>
+<div class="row"><span class="name">Tallat</span><span class="price">1,60€</span></div>
+<div class="row"><span class="name">Cafè amb llet</span><span class="price">1,80€</span></div>
+<div class="row"><span class="name">Capuchino</span><span class="price">2,40€</span></div>
+<div class="row"><span class="name">Latte Macchiato</span><span class="price">2,60€</span></div>
+<div class="row"><span class="name">Earl Grey</span><span class="price">1,55€</span></div>
+<div class="row"><span class="name">Rooibos</span><span class="price">1,55€</span></div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="image-box">
+https://picsum.photos/900/700?4
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer"></div>
 
 <script>
 
-const paginas = document.querySelectorAll('.pagina');
+const slides=document.querySelectorAll('.slide');
 
-let actual = 0;
+let actual=0;
 
-setInterval(() => {
+setInterval(()=>{
 
-    paginas[actual].classList.remove('activa');
+slides[actual].classList.remove('active');
 
-    actual++;
+actual++;
 
-    if(actual >= paginas.length){
-        actual = 0;
-    }
+if(actual>=slides.length){
+actual=0;
+}
 
-    paginas[actual].classList.add('activa');
+slides[actual].classList.add('active');
 
-}, 20000);
+},20000);
 
 </script>
 
