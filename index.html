@@ -318,9 +318,9 @@ body {
         Hospital Sant Joan de Déu Barcelona
     </div>
 
-    <div class="horario">
-        Dilluns - Diumenge · 07:30 - 21:30
-    </div>
+    <div id="horario" class="horario">
+    Dilluns - Diumenge · 07:30 - 21:30
+</div>
 
 </div>
 
@@ -333,8 +333,7 @@ body {
 
     <!-- PANTALLA 1: ENTREPANS -->
 
-    <section class="slide active">
-
+<section class="slide active" data-lang="ca">
         <div class="categoria">
             ENTREPANS
         </div>
@@ -414,8 +413,7 @@ body {
 
     <!-- PANTALLA 2: PER PICAR I EL RACÓ DOLÇ -->
 
-    <section class="slide">
-
+<section class="slide" data-lang="ca">
         <div class="categoria">
             PER PICAR · EL RACÓ DOLÇ
         </div>
@@ -500,8 +498,7 @@ body {
 
     <!-- PANTALLA 3: BEGUDES -->
 
-    <section class="slide">
-
+<section class="slide" data-lang="ca">
         <div class="categoria">
             BEGUDES
         </div>
@@ -576,8 +573,7 @@ body {
 
     <!-- PANTALLA 4: CAFÈS, TÈ I INFUSIONS -->
 
-    <section class="slide">
-
+<section class="slide" data-lang="ca">
         <div class="categoria morada">
             CAFÈS · TÈ I INFUSIONS
         </div>
@@ -662,8 +658,7 @@ body {
 
   <!-- PANTALLA 5: MENÚ SOPAR -->
 
-<section class="slide">
-
+<section class="slide" data-lang="ca">
     <div class="categoria morada">
         MENÚ SOPAR
     </div>
@@ -721,8 +716,7 @@ body {
 </section>
 
     <!-- PANTALLA 6: BOCADILLOS -->
-<section class="slide">
-
+<section class="slide" data-lang="es">
     <div class="categoria">
         BOCADILLOS
     </div>
@@ -801,8 +795,7 @@ body {
 </section>
 
 <!-- PANTALLA 7: PARA PICAR · RINCÓN DULCE -->
-<section class="slide">
-
+<section class="slide" data-lang="es">
     <div class="categoria">
         PARA PICAR · RINCÓN DULCE
     </div>
@@ -886,8 +879,7 @@ body {
 </section>
 
 <!-- PANTALLA 8: BEBIDAS -->
-<section class="slide">
-
+<section class="slide" data-lang="es">
     <div class="categoria">
         BEBIDAS
     </div>
@@ -961,8 +953,7 @@ body {
 </section>
 
 <!-- PANTALLA 9: CAFÉS · TÉS E INFUSIONES -->
-<section class="slide">
-
+<section class="slide" data-lang="es">
     <div class="categoria morada">
         CAFÉS · TÉS E INFUSIONES
     </div>
@@ -1047,8 +1038,7 @@ body {
 </section>
 
 <!-- PANTALLA 10: MENÚ CENA -->
-<section class="slide">
-
+<section class="slide" data-lang="es">
     <div class="categoria morada">
         MENÚ CENA
     </div>
@@ -1105,8 +1095,7 @@ body {
 
 </section>
     <!-- PANTALLA 11: SANDWICHES -->
-<section class="slide">
-
+<section class="slide" data-lang="en">
     <div class="categoria">
         SANDWICHES
     </div>
@@ -1186,8 +1175,7 @@ body {
 
 
 <!-- PANTALLA 12: SNACKS · SWEET CORNER -->
-<section class="slide">
-
+<section class="slide" data-lang="en">
     <div class="categoria">
         SNACKS · SWEET CORNER
     </div>
@@ -1270,8 +1258,7 @@ body {
 
 </section>
 <!-- PANTALLA 13: DRINKS -->
-<section class="slide">
-
+<section class="slide" data-lang="en">
     <div class="categoria">
         DRINKS
     </div>
@@ -1345,8 +1332,7 @@ body {
 </section>
 
 <!-- PANTALLA 14: COFFEE · TEA & INFUSIONS -->
-<section class="slide">
-
+<section class="slide" data-lang="en">
     <div class="categoria morada">
         COFFEE · TEA & INFUSIONS
     </div>
@@ -1430,8 +1416,7 @@ body {
 </section>
 
 <!-- PANTALLA 15: DINNER MENU -->
-<section class="slide">
-
+<section class="slide" data-lang="en">
     <div class="categoria morada">
         DINNER MENU
     </div>
@@ -1490,12 +1475,11 @@ body {
 </main>
 <footer class="footer">
 
-    <div class="footer-gluten">
-        Pregunta al nostre cambrer per les opcions sense gluten disponibles.
+<div id="footer-gluten" class="footer-gluten">        Pregunta al nostre cambrer per les opcions sense gluten disponibles.
     </div>
 
-    <div class="footer-alergens">
-        Tots els nostres productes poden contenir traces o al·lèrgens. Si teniu alguna intolerància o al·lèrgia alimentària, demaneu l’anàlisi d’al·lèrgens al nostre personal abans de fer la vostra comanda.
+<div id="footer-alergens" class="footer-alergens">
+    Tots els nostres productes poden contenir traces o al·lèrgens. Si teniu alguna intolerància o al·lèrgia alimentària, demaneu l’anàlisi d’al·lèrgens al nostre personal abans de fer la vostra comanda.
     </div>
 
 </footer>
@@ -1512,8 +1496,52 @@ function mostrarSlide(indice) {
     });
 
     slides[indice].classList.add("active");
-}
 
+    const idioma = slides[indice].dataset.lang;
+
+    const horario = document.getElementById("horario");
+    const gluten = document.getElementById("footer-gluten");
+    const alergenos = document.getElementById("footer-alergens");
+
+    if (idioma === "ca") {
+
+        horario.textContent =
+            "Dilluns - Diumenge · 07:30 - 21:30";
+
+        gluten.textContent =
+            "Pregunta al nostre cambrer per les opcions sense gluten disponibles.";
+
+        alergenos.textContent =
+            "Tots els nostres productes poden contenir traces o al·lèrgens. Si teniu alguna intolerància o al·lèrgia alimentària, demaneu l’anàlisi d’al·lèrgens al nostre personal abans de fer la vostra comanda.";
+
+    }
+
+    else if (idioma === "es") {
+
+        horario.textContent =
+            "Lunes - Domingo · 07:30 - 21:30";
+
+        gluten.textContent =
+            "Pregunta a nuestro personal por las opciones sin gluten disponibles.";
+
+        alergenos.textContent =
+            "Todos nuestros productos pueden contener trazas o alérgenos. Si tiene alguna intolerancia o alergia alimentaria, solicite la información sobre alérgenos a nuestro personal antes de realizar su pedido.";
+
+    }
+
+    else if (idioma === "en") {
+
+        horario.textContent =
+            "Monday - Sunday · 07:30 - 21:30";
+
+        gluten.textContent =
+            "Ask our staff about available gluten-free options.";
+
+        alergenos.textContent =
+            "All our products may contain traces of allergens. If you have any food intolerance or allergy, please ask our staff for allergen information before placing your order.";
+
+    }
+}
 mostrarSlide(slideActual);
 
 setInterval(function() {
