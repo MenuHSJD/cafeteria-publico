@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Cafetería SJD</title>
+
+<style>
+@font-face {
+    font-family: 'Ciutadella';
+    src: url('Ciutadella-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ciutadella';
+    src: url('Ciutadella-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:transparent;
+    font-family:'Ciutadella', Arial, sans-serif;
+}
+.header{
+    background:#000000;
+    color:white;
+
+    padding:12px 30px;
+
+    position:relative;
+}
+
+.titulo{
+    font-size:clamp(30px, 2.5vw, 42px);
+    font-weight:600;
+}
+.subtitulo{
+    font-size:22px;
+    opacity:0.95;
+}
+
+.container{
+    display:flex;
+    height:calc(100vh - 105px);
+    width:100%;
+    overflow:hidden;
+}
+
+.numero-dia{
+    font-size:90px;
+    font-weight:bold;
+    line-height:1;
+    color:#8A278C;
+    margin-top:20px;
+}
+
+.mes{
+    font-size:24px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.anio{
+    font-size:18px;
+    color:#666;
+}
+
+.dia-es{
+    font-size:24px;
+    margin-top:25px;
+    color:#666;
+    font-weight:bold;
+}
+
+.content{
+    flex:1;
+    padding:20px;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    background:transparent;
+}
+
+.pantalla{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:32% 68%;
+
+    gap:20px;
+
+    overflow:hidden;
+
+    background:transparent;
+}
+.iptv-panel{
+    grid-column:2;
+    grid-row:1;
+
+    width:100%;
+    height:100%;
+
+    padding:0;
+
+    background:transparent;
+}
+
+.columna{
+    width:100%;
+}
+
+.servicio{
+    background:#942D83;
+    color:white;
+
+    text-align:center;
+
+    padding:12px;
+
+    font-size:34px;
+    font-weight:600;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+}
+
+.bloque{
+
+    background:white;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 2px 8px rgba(0,0,0,0.08);
+}
+
+.titulo-bloque{
+
+    text-align:center;
+
+    padding:14px;
+
+    font-size:28px;
+
+    font-weight:600;
+}
+
+.primero{
+    background:#FF6600;
+    color:white;
+}
+
+.segundo{
+    background:#FF6600;
+    color:white;
+}
+
+.vegano{
+    background:#9fd48c;
+    color:white;
+}
+
+.postre{
+    background:#FF6600;
+    color:white;
+}
+.cuerpo-bloque{
+    padding:10px 12px;
+    height:160px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    overflow:hidden;
+    min-width:0;
+}
+.item{
+    font-size:clamp(22px, 1.5vw, 30px);
+    font-weight:600;
+    text-transform:uppercase;
+    text-align:center;
+    margin:7px 0;
+    line-height:1.15;
+    width:100%;
+    min-width:0;
+    overflow-wrap:anywhere;
+    word-break:normal;
+}
+
+.tv-placeholder{
+    width:100%;
+    height:100%;
+
+    min-height:0;
+
+    background:transparent;
+}
+.menu-panel{
+    grid-column:1;
+    grid-row:1;
+
+    width:100%;
+    height:100%;
+
+    background:transparent;
+}
+
+.header-texto{
+    flex:1;
+}
+
+.logo-sjd{
+    position:absolute;
+    top:10px;
+    right:20px;
+    height:80px;
+    width:auto;
+    object-fit:contain;
+}
+
+.footer{
+    flex-shrink:0;
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:17px;
+    color:#666;
+    margin-top:10px;
+    background:transparent;
+    line-height:1.4;
+}
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    background:transparent;
+}
+   .item-con-iconos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    column-gap:7px;
+    row-gap:3px;
+    margin:7px 0;
+    width:100%;
+    min-width:0;
+}
+
+.item-texto{
+    text-transform:uppercase;
+    min-width:0;
+    max-width:calc(100% - 65px);
+    overflow-wrap:anywhere;
+    word-break:normal;
+    white-space:normal;
+}
+
+.icono-alergeno{
+    width:22px;
+    height:22px;
+    object-fit:contain;
+    flex:0 0 22px;
+}
+#creditosAlergenos,
+#creditosFinales{
+    width:100vw;
+    text-align:center;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+}
+    
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="header-texto">
+        <div class="titulo" id="tituloSemana">
+            MENÚ CAFETERIA
+        </div>
+
+        <div class="subtitulo" id="fechaCabecera">
+            Hospital Sant Joan de Déu Barcelona
+        </div>
+    </div>
+
+<img src="SJD MARCA NEGATIU H-01.png" class="logo-sjd">
+
+  
+
+</div>
+
+<div class="container">
+<!-- INICIO CONTENT -->
+<div class="content">
+<div class="pantalla">
+<div class="menu-panel">
+<div class="columna" id="menuComida">
+<div class="servicio" id="tituloServicioComida">
+COMIDA
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque primero" id="tituloPrimeroComida">
+PRIMERO
+</div>
+
+<div class="cuerpo-bloque" id="cp"></div>
+
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque segundo" id="tituloSegundoComida">
+SEGUNDO
+</div>
+
+<div class="cuerpo-bloque" id="cs"></div>
+
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque postre">
+POSTRES
+</div>
+
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque vegano" id="tituloVeganoComida">
+VEGANO
+</div>
+<div class="cuerpo-bloque" id="cveg"></div>
+
+</div>
+</div>
+
+<div class="columna" id="menuCena">
+
+<div class="servicio" id="tituloServicioCena">
+CENA
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque primero" id="tituloPrimeroCena">
+PRIMERO
+</div>
+<div class="cuerpo-bloque" id="cnp"></div>
+
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque segundo" id="tituloSegundoCena">
+SEGUNDO
+</div>
+
+<div class="cuerpo-bloque" id="cns"></div>
+
+</div>
+
+<div class="bloque">
+
+    <div class="titulo-bloque postre">
+        POSTRES
+    </div>
+
+</div>
+
+<div class="bloque">
+
+<div class="titulo-bloque vegano" id="tituloVeganoCena">
+VEGANO
+</div>
+<div class="cuerpo-bloque" id="cnveg"></div>
+
+</div>
+</div>
+</div>
+
+<div class="iptv-panel">
+    <div class="tv-placeholder"></div>
+</div>
+
+</div>
+
+<div class="footer">
+
+    <div id="creditosAlergenos">
+
+        <img src="gluten.svg" class="icono-alergeno">
+        Puede contener gluten
+
+        &nbsp;&nbsp;&nbsp;
+
+        <img src="lacteos.svg" class="icono-alergeno">
+        Puede contener lácteos
+
+    </div>
+
+    <div id="creditosFinales">
+        Buen provecho · Enjoy your meal · Bon appétit ·
+        شهية طيبة · 祝您用餐愉快 · 맛있게 드세요 · 召し上がれ
+    </div>
+
+</div>
+
+</div>
+</div>
+<script>
+
+const URL_JSON =
+"https://script.google.com/macros/s/AKfycbx0JiNXhFy5NTiDU9Zhrp5Ym1OTsDEjnQswsmuRzpnZR6mMbGM-O_JHKwV4jxAYkpdcdQ/exec";
+
+
+/*
+Minuto par: castellano.
+Minuto impar: catalán.
+*/
+let datosMenu = [];
+let idiomaActual = "";
+let cargandoDatos = false;
+const DIAS_CAT = {
+    "Lunes": "DILLUNS",
+    "Martes": "DIMARTS",
+    "Miércoles": "DIMECRES",
+    "Jueves": "DIJOUS",
+    "Viernes": "DIVENDRES",
+    "Sabado": "DISSABTE",
+    "Sábado": "DISSABTE",
+    "Domingo": "DIUMENGE"
+};
+
+const DIAS_ES = {
+    "Lunes": "LUNES",
+    "Martes": "MARTES",
+    "Miércoles": "MIÉRCOLES",
+    "Jueves": "JUEVES",
+    "Viernes": "VIERNES",
+    "Sabado": "SÁBADO",
+    "Sábado": "SÁBADO",
+    "Domingo": "DOMINGO"
+};
+
+const MESES_CAT = [
+    "GENER",
+    "FEBRER",
+    "MARÇ",
+    "ABRIL",
+    "MAIG",
+    "JUNY",
+    "JULIOL",
+    "AGOST",
+    "SETEMBRE",
+    "OCTUBRE",
+    "NOVEMBRE",
+    "DESEMBRE"
+];
+
+const MESES_ES = [
+    "ENERO",
+    "FEBRERO",
+    "MARZO",
+    "ABRIL",
+    "MAYO",
+    "JUNIO",
+    "JULIO",
+    "AGOSTO",
+    "SEPTIEMBRE",
+    "OCTUBRE",
+    "NOVIEMBRE",
+    "DICIEMBRE"
+];
+
+/*
+El idioma se calcula usando bloques exactos
+de 15 segundos del reloj:
+
+00-14: castellano
+15-29: catalán
+30-44: castellano
+45-59: catalán
+*/
+function obtenerIdiomaDelReloj() {
+
+    const ahora = new Date();
+
+    const bloqueActual =
+        Math.floor(ahora.getSeconds() / 15);
+
+    return bloqueActual % 2 === 0
+        ? "ES"
+        : "CAT";
+}
+
+/*
+Solo vuelve a pintar la pantalla cuando cambia
+el idioma o cuando se fuerza la actualización.
+*/
+function actualizarPantalla(forzar) {
+
+    const nuevoIdioma =
+        obtenerIdiomaDelReloj();
+
+    if (forzar || nuevoIdioma !== idiomaActual) {
+
+        idiomaActual =
+            nuevoIdioma;
+
+        cargar();
+    }
+}
+
+async function actualizarDatos() {
+
+    if (cargandoDatos) {
+        return;
+    }
+
+    cargandoDatos = true;
+
+    try {
+
+        const respuesta =
+            await fetch(URL_JSON + "?t=" + Date.now());
+
+        if (!respuesta.ok) {
+            throw new Error(
+                "Error HTTP al cargar el JSON: " +
+                respuesta.status
+            );
+        }
+
+        const nuevosDatos =
+            await respuesta.json();
+
+        if (Array.isArray(nuevosDatos)) {
+
+            datosMenu = nuevosDatos;
+
+            actualizarPantalla(true);
+
+        }
+
+    }
+    catch (e) {
+
+        console.error(
+            "Error actualizando los datos del menú:",
+            e
+        );
+
+    }
+    finally {
+
+        cargandoDatos = false;
+
+    }
+
+}
+
+function cargar() {
+
+    try {
+
+        const datos = datosMenu;
+
+        if (!Array.isArray(datos) || datos.length === 0) {
+            return;
+        }
+
+        const ahora = new Date();
+
+        const minutosActuales =
+            ahora.getHours() * 60 +
+            ahora.getMinutes();
+
+        /*
+        De 07:00 a 15:09: Comida.
+        De 15:10 a 06:59: Cena.
+        */
+        const esComida =
+            minutosActuales >= 420 &&
+            minutosActuales < 910;
+
+        /*
+        De 00:00 a 06:59 se utiliza la Cena
+        correspondiente al día anterior.
+        */
+        const fechaMenu = new Date(ahora);
+
+        if (minutosActuales < 420) {
+            fechaMenu.setDate(fechaMenu.getDate() - 1);
+        }
+
+        const yyyy =
+            fechaMenu.getFullYear();
+
+        const mm =
+            String(fechaMenu.getMonth() + 1).padStart(2, "0");
+
+        const dd =
+            String(fechaMenu.getDate()).padStart(2, "0");
+
+        const fechaISO =
+            `${yyyy}-${mm}-${dd}`;
+
+        const registros =
+            datos.filter(x =>
+                String(x.Fecha).startsWith(fechaISO)
+            );
+
+        if (registros.length === 0) {
+            return;
+        }
+
+        const diaOriginal =
+            registros[0].Dia;
+
+        document.getElementById("tituloSemana").textContent =
+            "MENÚ CAFETERIA";
+
+        /*
+        Cabecera, títulos y créditos en el idioma actual.
+        */
+        if (idiomaActual === "CAT") {
+
+            document.getElementById("fechaCabecera").textContent =
+                "Hospital Sant Joan de Déu Barcelona · " +
+                (DIAS_CAT[diaOriginal] ||
+                    String(diaOriginal).toUpperCase()) +
+                " " +
+                dd + " " +
+                MESES_CAT[fechaMenu.getMonth()];
+
+            document.getElementById("tituloServicioComida").textContent =
+                "DINAR";
+
+            document.getElementById("tituloPrimeroComida").textContent =
+                "PRIMER";
+
+            document.getElementById("tituloSegundoComida").textContent =
+                "SEGON";
+
+            document.getElementById("tituloVeganoComida").textContent =
+                "VEGÀ";
+
+            document.getElementById("tituloServicioCena").textContent =
+                "SOPAR";
+
+            document.getElementById("tituloPrimeroCena").textContent =
+                "PRIMER";
+
+            document.getElementById("tituloSegundoCena").textContent =
+                "SEGON";
+
+            document.getElementById("tituloVeganoCena").textContent =
+                "VEGÀ";
+
+            document.getElementById("creditosAlergenos").innerHTML =
+                '<img src="gluten.svg" class="icono-alergeno"> ' +
+                'Pot contenir gluten ' +
+                '&nbsp;&nbsp;&nbsp; ' +
+                '<img src="lacteos.svg" class="icono-alergeno"> ' +
+                'Pot contenir lactis';
+
+            document.getElementById("creditosFinales").innerHTML =
+                "Bon profit · Enjoy your meal · Bon appétit · " +
+                "شهية طيبة · 祝您用餐愉快 · 맛있게 드세요 · 召し上がれ";
+
+        } else {
+
+            document.getElementById("fechaCabecera").textContent =
+                "Hospital Sant Joan de Déu Barcelona · " +
+                (DIAS_ES[diaOriginal] ||
+                    String(diaOriginal).toUpperCase()) +
+                " " +
+                dd + " " +
+                MESES_ES[fechaMenu.getMonth()];
+
+            document.getElementById("tituloServicioComida").textContent =
+                "COMIDA";
+
+            document.getElementById("tituloPrimeroComida").textContent =
+                "PRIMERO";
+
+            document.getElementById("tituloSegundoComida").textContent =
+                "SEGUNDO";
+
+            document.getElementById("tituloVeganoComida").textContent =
+                "VEGANO";
+
+            document.getElementById("tituloServicioCena").textContent =
+                "CENA";
+
+            document.getElementById("tituloPrimeroCena").textContent =
+                "PRIMERO";
+
+            document.getElementById("tituloSegundoCena").textContent =
+                "SEGUNDO";
+
+            document.getElementById("tituloVeganoCena").textContent =
+                "VEGANO";
+
+            document.getElementById("creditosAlergenos").innerHTML =
+                '<img src="gluten.svg" class="icono-alergeno"> ' +
+                'Puede contener gluten ' +
+                '&nbsp;&nbsp;&nbsp; ' +
+                '<img src="lacteos.svg" class="icono-alergeno"> ' +
+                'Puede contener lácteos';
+
+            document.getElementById("creditosFinales").innerHTML =
+                "Buen provecho · Enjoy your meal · Bon appétit · " +
+                "شهية طيبة · 祝您用餐愉快 · 맛있게 드세요 · 召し上がれ";
+
+        }
+
+        /*
+        El servicio depende únicamente del horario.
+        No se alterna Comida y Cena cada minuto.
+        */
+        document.getElementById("menuComida").style.display =
+            esComida ? "block" : "none";
+
+        document.getElementById("menuCena").style.display =
+            esComida ? "none" : "block";
+
+        function filtrar(servicio, categoria) {
+
+            return registros.filter(x =>
+                x.Servicio === servicio &&
+                x.Categoria === categoria &&
+                String(x.Activo || "")
+                    .trim()
+                    .toUpperCase() === "SI"
+            );
+
+        }
+
+        function pintar(lista) {
+
+            return lista.map(x => {
+
+                /*
+                Plato_Cat contiene:
+                texto catalán/texto castellano
+                */
+                const partes =
+                    String(x.Plato_Cat || "").split("/");
+
+                const textoCatalan =
+                    (partes[0] || "").trim();
+
+                const textoCastellano =
+                    (partes.slice(1).join("/") ||
+                        partes[0] ||
+                        "").trim();
+
+                const texto =
+                    idiomaActual === "CAT"
+                        ? textoCatalan
+                        : textoCastellano;
+
+                const tieneGluten =
+                    String(x.Gluten || "")
+                        .trim()
+                        .toUpperCase() === "SI";
+
+                const tieneLacteos =
+                    String(x.Lacteos || "")
+                        .trim()
+                        .toUpperCase() === "SI";
+
+                return `
+                    <div class="item item-con-iconos">
+
+                        <span class="item-texto">
+                            ${texto}
+                        </span>
+
+                        ${
+                            tieneGluten
+                                ? '<img src="gluten.svg" class="icono-alergeno">'
+                                : ''
+                        }
+
+                        ${
+                            tieneLacteos
+                                ? '<img src="lacteos.svg" class="icono-alergeno">'
+                                : ''
+                        }
+
+                    </div>
+                `;
+
+            }).join("");
+
+        }
+
+        document.getElementById("cp").innerHTML =
+            pintar(filtrar("Comida", "Primero"));
+
+        document.getElementById("cs").innerHTML =
+            pintar(filtrar("Comida", "Segundo"));
+
+        document.getElementById("cveg").innerHTML =
+            pintar(filtrar("Comida", "Vegano"));
+
+        document.getElementById("cnp").innerHTML =
+            pintar(filtrar("Cena", "Primero"));
+
+        document.getElementById("cns").innerHTML =
+            pintar(filtrar("Cena", "Segundo"));
+
+        document.getElementById("cnveg").innerHTML =
+            pintar(filtrar("Cena", "Vegano"));
+        
+     
+
+       
+    }
+    catch (e) {
+
+        console.error("Error cargando el menú:", e);
+
+    }
+
+}
+
+/*
+Idioma inicial sincronizado con el reloj.
+*/
+idiomaActual = obtenerIdiomaDelReloj();
+
+/*
+Descarga inicial de los datos.
+Cuando termine, se pintará la pantalla.
+*/
+actualizarDatos();
+
+/*
+Programa cada cambio en los segundos exactos:
+00, 15, 30 y 45.
+*/
+function programarSiguienteCambio() {
+
+    const ahora = Date.now();
+
+    const siguienteCambio =
+        Math.floor(ahora / 15000) * 15000 + 15000;
+
+    const tiempoEspera =
+        siguienteCambio - ahora + 50;
+
+    setTimeout(function() {
+
+        actualizarPantalla(false);
+        programarSiguienteCambio();
+
+    }, tiempoEspera);
+}
+
+programarSiguienteCambio();
+
+/*
+Actualiza los datos del Sheet cada 60 segundos.
+Esto no controla el cambio de idioma.
+*/
+setInterval(function() {
+
+    actualizarDatos();
+
+}, 60000);
+</script>
+</body>
+</html>
