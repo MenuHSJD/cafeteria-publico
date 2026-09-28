@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
 
 <meta charset="utf-8">
@@ -9,193 +10,274 @@
 
 <style>
 
-@font-face{
-    font-family:'Ciutadella';
-    src:url('Ciutadella-Regular.woff2') format('woff2');
-    font-weight:400;
+@font-face {
+    font-family: "Ciutadella";
+    src: url("Ciutadella-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
 }
 
-@font-face{
-    font-family:'Ciutadella';
-    src:url('Ciutadella-SemiBold.woff2') format('woff2');
-    font-weight:600;
+@font-face {
+    font-family: "Ciutadella";
+    src: url("Ciutadella-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
 }
 
-:root{
-    --morado:#942D83;
-    --naranja:#FF6600;
+:root {
+    --morado: #942D83;
+    --naranja: #FF6600;
+    --fondo: #F5F3EF;
+    --blanco: #FFFFFF;
+    --texto: #222222;
+    --linea: #E2E2E2;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#f5f3ef;
-    font-family:'Ciutadella',sans-serif;
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--fondo);
+    font-family: "Ciutadella", Arial, sans-serif;
 }
 
-body{
-    display:flex;
-    flex-direction:column;
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 /* CABECERA */
 
-.header{
+.header {
+    width: 100%;
+    height: 118px;
+    flex: 0 0 118px;
 
-    height:110px;
+    background: #000000;
+    color: #FFFFFF;
 
-    background:#000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    color:white;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:15px 30px;
-
-    flex-shrink:0;
+    padding: 14px 32px;
 }
 
-.header-left{
-    display:flex;
-    flex-direction:column;
+.header-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
 }
 
-.titulo{
-    font-size:42px;
-    font-weight:600;
-    line-height:1;
+.titulo {
+    font-size: clamp(34px, 2.4vw, 48px);
+    font-weight: 600;
+    line-height: 1;
 }
 
-.subtitulo{
-    font-size:19px;
-    margin-top:6px;
+.subtitulo {
+    margin-top: 8px;
+    font-size: clamp(17px, 1.25vw, 23px);
+    line-height: 1;
 }
 
-.logo-sjd{
-    height:72px;
-    width:auto;
-    display:block;
+.logo-sjd {
+    display: block;
+    height: 82px;
+    width: auto;
+    max-width: 390px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
-/* CONTENIDO */
+/* ZONA CENTRAL */
 
-.main{
-    flex:1;
-    position:relative;
-    overflow:hidden;
+.main {
+    position: relative;
+    width: 100%;
+
+    flex: 1 1 auto;
+    min-height: 0;
+
+    overflow: hidden;
+    background: var(--fondo);
 }
 
-.slide{
-    position:absolute;
-    inset:0;
-    display:none;
-    flex-direction:column;
-    padding:20px 25px;
+.slide {
+    position: absolute;
+    inset: 0;
+
+    display: none;
+    flex-direction: column;
+
+    padding: 24px 30px;
+
+    background: var(--fondo);
 }
 
-.slide.active{
-    display:flex;
+.slide.active {
+    display: flex;
 }
 
-.categoria{
+/* TÍTULO DE CATEGORÍA */
 
-    background:var(--naranja);
+.categoria {
+    width: 100%;
+    height: 68px;
+    flex: 0 0 68px;
 
-    color:white;
+    background: var(--naranja);
+    color: #FFFFFF;
 
-    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size:34px;
-    font-weight:600;
+    border-radius: 15px;
 
-    padding:14px;
+    font-size: clamp(28px, 2vw, 38px);
+    font-weight: 600;
+    text-align: center;
 
-    border-radius:15px;
-
-    margin-bottom:18px;
+    padding: 8px 24px;
+    margin-bottom: 20px;
 }
 
-.categoria.morada{
-    background:var(--morado);
+.categoria.morada {
+    background: var(--morado);
 }
 
-.columnas{
+/* PANEL BLANCO */
 
-    flex:1;
+.panel-productos {
+    width: 100%;
 
-    display:grid;
+    flex: 1 1 auto;
+    min-height: 0;
 
-    grid-template-columns:1fr 1fr 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    gap:20px;
+    background: var(--blanco);
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.09);
 }
 
-.columna{
+/* COLUMNAS */
 
-    background:white;
+.columna {
+    min-width: 0;
+    height: 100%;
 
-    border-radius:15px;
+    display: flex;
+    flex-direction: column;
 
-    padding:12px 18px;
-
-    box-shadow:
-    0 2px 8px rgba(0,0,0,.08);
+    padding: 20px 28px;
 }
 
-.producto{
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    min-height:52px;
-
-    border-bottom:1px solid #e5e5e5;
+.columna + .columna {
+    border-left: 1px solid var(--linea);
 }
 
-.nombre{
-    font-size:22px;
-    color:#222;
-    padding-right:10px;
+/* PRODUCTOS */
+
+.producto {
+    width: 100%;
+    min-height: 74px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+
+    column-gap: 20px;
+
+    border-bottom: 1px solid var(--linea);
 }
 
-.precio{
-    font-size:22px;
-    color:var(--morado);
-    font-weight:600;
-    white-space:nowrap;
+.nombre {
+    min-width: 0;
+
+    color: var(--texto);
+
+    font-size: clamp(23px, 1.55vw, 31px);
+    font-weight: 400;
+    line-height: 1.15;
+
+    overflow-wrap: break-word;
+}
+
+.precio {
+    color: var(--morado);
+
+    font-size: clamp(23px, 1.55vw, 31px);
+    font-weight: 600;
+    line-height: 1;
+
+    white-space: nowrap;
 }
 
 /* PIE */
 
-.footer{
+.footer {
+    width: 100%;
+    height: 48px;
+    flex: 0 0 48px;
 
-    height:44px;
+    background: var(--naranja);
+    color: #FFFFFF;
 
-    background:var(--naranja);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    color:white;
+    font-size: clamp(18px, 1.25vw, 24px);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
 
-    display:flex;
+/* AJUSTES PARA PANTALLAS HORIZONTALES PEQUEÑAS */
 
-    justify-content:center;
-    align-items:center;
+@media (max-width: 1100px) {
 
-    font-size:20px;
-    font-weight:600;
+    .header {
+        height: 100px;
+        flex-basis: 100px;
+        padding: 12px 24px;
+    }
 
-    letter-spacing:2px;
+    .logo-sjd {
+        height: 68px;
+        max-width: 320px;
+    }
+
+    .slide {
+        padding: 18px 22px;
+    }
+
+    .categoria {
+        height: 58px;
+        flex-basis: 58px;
+        margin-bottom: 16px;
+    }
+
+    .columna {
+        padding: 14px 18px;
+    }
+
+    .producto {
+        min-height: 58px;
+    }
 }
 
 </style>
@@ -204,9 +286,9 @@ body{
 
 <body>
 
-<div class="header">
+<header class="header">
 
-    <div class="header-left">
+    <div class="header-texto">
 
         <div class="titulo">
             CAFETERIA PÚBLIC
@@ -218,102 +300,377 @@ body{
 
     </div>
 
-    <img
-        src="SJD MARCA NEGATIU H-01.png"
-        class="logo-sjd"
-        alt="Logo SJD">
+    SJD MARCA NEGATIU H-01.png
 
-</div>
+</header>
 
-<div class="main">
+<main class="main">
 
-<!-- ENTREPANS -->
+    <!-- PANTALLA 1: ENTREPANS -->
 
-<div class="slide as">
+    <section class="slide active">
 
-<div class="columna">
-<div class="producto"><span class="nombre">Pernil</span><span class="precio">2,50€</span></div>
-<div class="producto"><span class="nombre">Tonyina</span><span class="precio">2,50€</span></div>
-<div class="producto"><span class="nombre">Formatge</span><span class="precio">2,50€</span></div>
-<div class="producto"><span class="nombre">Llom</span><span class="precio">3,70€</span></div>
-</div>
+        <div class="categoria">
+            ENTREPANS
+        </div>
 
-<div class="columna">
-<div class="producto"><span class="nombre">Pernil dolç</span><span class="precio">3,20€</span></div>
-<div class="producto"><span class="nombre">Tonyina, pebrot i olives</span><span class="precio">4,70€</span></div>
-<div class="producto"><span class="nombre">Bacon</span><span class="precio">3,70€</span></div>
-<div class="producto"><span class="nombre">Truita de patates</span><span class="precio">3,50€</span></div>
-</div>
+        <div class="panel-productos">
 
-<div class="columna">
-<div class="producto"><span class="nombre">Truita francesa</span><span class="precio">3,40€</span></div>
-<div class="producto"><span class="nombre">Bikini</span><span class="precio">3,50€</span></div>
-<div class="producto"><span class="nombre">Vegetal amb formatge fresc</span><span class="precio">4,70€</span></div>
-</div>
+            <div class="columna">
 
-</div>
-</div>
+                <div class="producto">
+                    <span class="nombre">Pernil</span>
+                    <span class="precio">2,50€</span>
+                </div>
 
-<!-- PER PICAR -->
+                <div class="producto">
+                    <span class="nombre">Tonyina</span>
+                    <span class="precio">2,50€</span>
+                </div>
 
-<div class="slide">
+                <div class="producto">
+                    <span class="nombre">Formatge</span>
+                    <span class="precio">2,50€</span>
+                </div>
 
-<div class="categoria">PER PICAR · EL RACÓ DOLÇ</div>
+                <div class="producto">
+                    <span class="nombre">Llom</span>
+                    <span class="precio">3,70€</span>
+                </div>
 
-<div class="columnas">
+            </div>
 
-<div class="columna">
-<div class="producto"><span class="nombre">Patates Chips</span><span class="precio">1,85€</span></div>
-<div class="producto"><span class="nombre">Croquetes casolanes</span><span class="precio">2,20€</span></div>
-<div class="producto"><span class="nombre">Pizza del dia</span><span class="precio">3,70€</span></div>
-<div class="producto"><span class="nombre">Amanida del dia</span><span class="precio">4,80€</span></div>
-</div>
+            <div class="columna">
 
-<div class="columna">
-<div class="producto"><span class="nombre">Croissant</span><span class="precio">1,80€</span></div>
-<div class="producto"><span class="nombre">Croissant xocolata</span><span class="precio">2,10€</span></div>
-<div class="producto"><span class="nombre">Ensaimada</span><span class="precio">2,00€</span></div>
-<div class="producto"><span class="nombre">Ensaimada farcida</span><span class="precio">2,20€</span></div>
-</div>
+                <div class="producto">
+                    <span class="nombre">Pernil dolç</span>
+                    <span class="precio">3,20€</span>
+                </div>
 
-<div class="columna">
-<div class="producto"><span class="nombre">Berlina glaçada</span><span class="precio">1,80€</span></div>
-<div class="producto"><span class="nombre">Berlina de xocolata</span><span class="precio">2,20€</span></div>
-<div class="producto"><span class="nombre">Mini brioxeria</span><span class="precio">1,00€</span></div>
-<div class="producto"><span class="nombre">Pastís de pastanaga</span><span class="precio">2,60€</span></div>
-</div>
+                <div class="producto">
+                    <span class="nombre">Tonyina, pebrot i olives</span>
+                    <span class="precio">4,70€</span>
+                </div>
 
-</div>
+                <div class="producto">
+                    <span class="nombre">Bacon</span>
+                    <span class="precio">3,70€</span>
+                </div>
 
-</div>
+                <div class="producto">
+                    <span class="nombre">Truita de patates</span>
+                    <span class="precio">3,50€</span>
+                </div>
 
-</div>
+            </div>
 
-<div class="footer">
-CAFETERIA · ALL DAY
-</div>
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Truita francesa</span>
+                    <span class="precio">3,40€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Bikini</span>
+                    <span class="precio">3,50€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Vegetal amb formatge fresc</span>
+                    <span class="precio">4,70€</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PANTALLA 2: PER PICAR I EL RACÓ DOLÇ -->
+
+    <section class="slide">
+
+        <div class="categoria">
+            PER PICAR · EL RACÓ DOLÇ
+        </div>
+
+        <div class="panel-productos">
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Patates Chips</span>
+                    <span class="precio">1,85€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Croquetes casolanes</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Pizza del dia</span>
+                    <span class="precio">3,70€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Amanida del dia</span>
+                    <span class="precio">4,80€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Croissant</span>
+                    <span class="precio">1,80€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Croissant de xocolata</span>
+                    <span class="precio">2,10€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Ensaimada</span>
+                    <span class="precio">2,00€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Ensaimada farcida</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Berlina glaçada</span>
+                    <span class="precio">1,80€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Berlina de xocolata</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Mini brioxeria</span>
+                    <span class="precio">1,00€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Pastís de pastanaga</span>
+                    <span class="precio">2,60€</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PANTALLA 3: BEGUDES -->
+
+    <section class="slide">
+
+        <div class="categoria">
+            BEGUDES
+        </div>
+
+        <div class="panel-productos">
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Aigua mineral</span>
+                    <span class="precio">1,30€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Aigua amb gas</span>
+                    <span class="precio">1,80€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Aigua filtrada</span>
+                    <span class="precio">0,95€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Aigua amb gas filtrada</span>
+                    <span class="precio">1,10€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Refresc</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Cervesa sense alcohol</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Sucs de fruita</span>
+                    <span class="precio">2,20€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Cacaolat</span>
+                    <span class="precio">2,10€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Suc de taronja natural</span>
+                    <span class="precio">3,10€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Lemon &amp; Roll</span>
+                    <span class="precio">3,10€</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PANTALLA 4: CAFÈS, TÈ I INFUSIONS -->
+
+    <section class="slide">
+
+        <div class="categoria morada">
+            CAFÈS · TÈ I INFUSIONS
+        </div>
+
+        <div class="panel-productos">
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Cafè sol</span>
+                    <span class="precio">1,50€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Cafè amb gel</span>
+                    <span class="precio">1,50€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Tallat</span>
+                    <span class="precio">1,60€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Cafè amb llet</span>
+                    <span class="precio">1,80€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Cafè americà</span>
+                    <span class="precio">1,80€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Capuchino</span>
+                    <span class="precio">2,40€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Latte Macchiato</span>
+                    <span class="precio">2,60€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Chai Latte</span>
+                    <span class="precio">2,60€</span>
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto">
+                    <span class="nombre">Earl Grey</span>
+                    <span class="precio">1,55€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Rooibos</span>
+                    <span class="precio">1,55€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Menta</span>
+                    <span class="precio">1,55€</span>
+                </div>
+
+                <div class="producto">
+                    <span class="nombre">Camamilla</span>
+                    <span class="precio">1,55€</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    CAFETERIA · ALL DAY
+</footer>
 
 <script>
 
 const slides = document.querySelectorAll(".slide");
+let slideActual = 0;
 
-let actual = 0;
+function mostrarSlide(indice) {
 
-setInterval(() => {
+    slides.forEach(function(slide) {
+        slide.classList.remove("active");
+    });
 
-    slides[actual].classList.remove("active");
+    slides[indice].classList.add("active");
+}
 
-    actual++;
+mostrarSlide(slideActual);
 
-    if(actual >= slides.length){
-        actual = 0;
+setInterval(function() {
+
+    slideActual++;
+
+    if (slideActual >= slides.length) {
+        slideActual = 0;
     }
 
-    slides[actual].classList.add("active");
+    mostrarSlide(slideActual);
 
 }, 20000);
 
 </script>
 
 </body>
+
 </html>
