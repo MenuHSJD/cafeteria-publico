@@ -2,9 +2,9 @@
 <html lang="ca">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Cafeteria Públic SJD</title>
+<title>Cafeteria Públic</title>
 
 <style>
 
@@ -21,10 +21,10 @@
 }
 
 :root{
-    --sjd-purple:#942D83;
-    --sjd-orange:#FF6600;
-    --sjd-dark:#333333;
-    --paper:#f8f5ef;
+    --naranja:#FF6600;
+    --morado:#942D83;
+    --gris:#444;
+    --fondo:#f7f5f1;
 }
 
 *{
@@ -33,12 +33,13 @@
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:var(--paper);
     font-family:'Ciutadella',sans-serif;
+    background:var(--fondo);
 }
 
 body{
@@ -46,30 +47,40 @@ body{
     flex-direction:column;
 }
 
+/* CABECERA */
+
 .header{
-
-    height:120px;
-
-    background:white;
+    background:#000;
+    color:white;
+    height:105px;
+    padding:12px 30px;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
+}
 
-    padding:20px 50px;
+.header-left{
+    display:flex;
+    flex-direction:column;
+}
 
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+.titulo{
+    font-size:44px;
+    font-weight:600;
+    line-height:1;
+}
+
+.subtitulo{
+    font-size:20px;
+    margin-top:6px;
 }
 
 .logo{
-    height:70px;
+    height:75px;
 }
 
-.all-day{
-    font-size:44px;
-    font-weight:600;
-    color:var(--sjd-orange);
-}
+/* CONTENIDO */
 
 .main{
     flex:1;
@@ -78,118 +89,100 @@ body{
 }
 
 .slide{
-
     position:absolute;
     inset:0;
 
-    padding:50px;
+    display:flex;
+    flex-direction:column;
 
-    display:grid;
-    grid-template-columns:60% 40%;
-
-    gap:40px;
+    padding:25px;
 
     opacity:0;
-    visibility:hidden;
-    transform:scale(1.02);
+    pointer-events:none;
 
-    transition:
-    opacity 1.2s ease,
-    transform 1.2s ease;
+    transition:opacity 1s ease;
 }
 
 .slide.active{
     opacity:1;
-    visibility:visible;
-    transform:scale(1);
+    pointer-events:auto;
 }
 
-.left{
-    display:flex;
-    flex-direction:column;
-}
+.categoria{
+    background:var(--naranja);
 
-.right{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.category{
-
-    background:var(--sjd-orange);
     color:white;
 
-    padding:18px 25px;
-
-    border-radius:14px;
-
-    font-size:42px;
+    font-size:34px;
     font-weight:600;
 
-    margin-bottom:25px;
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
 }
 
-.category.purple{
-    background:var(--sjd-purple);
+.categoria.morado{
+    background:var(--morado);
 }
 
-.items{
+.grid{
+
     flex:1;
+
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+
+    gap:25px;
 }
 
-.row{
+.columna{
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.producto{
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:12px 0;
+    border-bottom:1px solid #ececec;
 
-    border-bottom:1px solid #ddd;
+    padding:10px 0;
 }
 
-.name{
-    font-size:34px;
-    color:var(--sjd-dark);
+.nombre{
+    font-size:28px;
+    color:#333;
 }
 
-.price{
-    font-size:34px;
-    font-weight:600;
-    color:var(--sjd-purple);
-}
-
-.image-box{
-
-    width:100%;
-    height:100%;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    background:white;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
-}
-
-.image-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.subtitle{
+.precio{
     font-size:28px;
     font-weight:600;
-    color:var(--sjd-purple);
-    margin:25px 0 10px;
+    color:var(--morado);
 }
 
 .footer{
-    height:60px;
-    background:var(--sjd-orange);
+    height:50px;
+    background:var(--naranja);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:2px;
 }
 
 </style>
@@ -199,177 +192,184 @@ body{
 
 <div class="header">
 
-<JD MARCA.png
+    <div class="header-left">
+        <div class="titulo">CAFETERIA PÚBLIC</div>
+        <div class="subtitulo">
+            Hospital Sant Joan de Déu Barcelona
+        </div>
+    </div>
 
-<div class="all-day">
+    <img src="SJD MARCA NEGATIU H-01.png" iv class="main">
+
+    <!-- ENTREPANS -->
+
+    <div class="slide active">
+
+        <div class="categoria">
+            ENTREPANS
+        </div>
+
+        <div class="grid">
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Pernil</span><span class="precio">2,50€</span></div>
+                <div class="producto"><span class="nombre">Tonyina</span><span class="precio">2,50€</span></div>
+                <div class="producto"><span class="nombre">Formatge</span><span class="precio">2,50€</span></div>
+                <div class="producto"><span class="nombre">Llom</span><span class="precio">3,70€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Pernil dolç</span><span class="precio">3,20€</span></div>
+                <div class="producto"><span class="nombre">Tonyina, pebrot i olives</span><span class="precio">4,70€</span></div>
+                <div class="producto"><span class="nombre">Bacon</span><span class="precio">3,70€</span></div>
+                <div class="producto"><span class="nombre">Truita de patates</span><span class="precio">3,50€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Truita francesa</span><span class="precio">3,40€</span></div>
+                <div class="producto"><span class="nombre">Bikini</span><span class="precio">3,50€</span></div>
+                <div class="producto"><span class="nombre">Vegetal formatge fresc</span><span class="precio">4,70€</span></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PICAR Y DOLÇ -->
+
+    <div class="slide">
+
+        <div class="categoria">
+            PER PICAR · EL RACÓ DOLÇ
+        </div>
+
+        <div class="grid">
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Patates Chips</span><span class="precio">1,85€</span></div>
+                <div class="producto"><span class="nombre">Croquetes casolanes</span><span class="precio">2,20€</span></div>
+                <div class="producto"><span class="nombre">Pizza del dia</span><span class="precio">3,70€</span></div>
+                <div class="producto"><span class="nombre">Amanida del dia</span><span class="precio">4,80€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Croissant</span><span class="precio">1,80€</span></div>
+                <div class="producto"><span class="nombre">Croissant xocolata</span><span class="precio">2,10€</span></div>
+                <div class="producto"><span class="nombre">Ensaimada</span><span class="precio">2,00€</span></div>
+                <div class="producto"><span class="nombre">Ensaimada farcida</span><span class="precio">2,00€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Berlina glaçada</span><span class="precio">1,80€</span></div>
+                <div class="producto"><span class="nombre">Berlina xocolata</span><span class="precio">2,20€</span></div>
+                <div class="producto"><span class="nombre">Mini brioxeria</span><span class="precio">1,00€</span></div>
+                <div class="producto"><span class="nombre">Pastís pastanaga</span><span class="precio">2,60€</span></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BEGUDES -->
+
+    <div class="slide">
+
+        <div class="categoria">
+            BEGUDES
+        </div>
+
+        <div class="grid">
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Aigua mineral</span><span class="precio">1,30€</span></div>
+                <div class="producto"><span class="nombre">Aigua amb gas</span><span class="precio">1,80€</span></div>
+                <div class="producto"><span class="nombre">Aigua filtrada</span><span class="precio">0,95€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Refresc</span><span class="precio">2,20€</span></div>
+                <div class="producto"><span class="nombre">Cervesa sense alcohol</span><span class="precio">2,20€</span></div>
+                <div class="producto"><span class="nombre">Sucs de fruita</span><span class="precio">2,20€</span></div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="producto"><span class="nombre">Cacaolat</span><span class="precio">2,10€</span></div>
+                <div class="producto"><span class="nombre">Suc taronja natural</span><span class="precio">3,10€</span></div>
+                <div class="producto"><span class="nombre">Lemon & Roll</span><span class="precio">3,10€</span></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CAFES -->
+
+    <div class="slide">
+
+        <div class="categoria morado">
+            CAFÈS · TÈ I INFUSIONS
+        </div>
+
+        <div class="grid">
+
+            <div class="columna">
+                <div class="producto"><span class="nombre">Cafè sol</span><span class="precio">1,50€</span></div>
+                <div class="producto"><span class="nombre">Cafè amb gel</span><span class="precio">1,50€</span></div>
+                <div class="producto"><span class="nombre">Tallat</span><span class="precio">1,60€</span></div>
+                <div class="producto"><span class="nombre">Cafè amb llet</span><span class="precio">1,80€</span></div>
+            </div>
+
+            <div class="columna">
+                <div class="producto"><span class="nombre">Capuchino</span><span class="precio">2,40€</span></div>
+                <div class="producto"><span class="nombre">Latte Macchiato</span><span class="precio">2,60€</span></div>
+                <div class="producto"><span class="nombre">Chai Latte</span><span class="precio">2,60€</span></div>
+            </div>
+
+            <div class="columna">
+                <div class="producto"><span class="nombre">Earl Grey</span><span class="precio">1,55€</span></div>
+                <div class="producto"><span class="nombre">Rooibos</span><span class="precio">1,55€</span></div>
+                <div class="producto"><span class="nombre">Menta</span><span class="precio">1,55€</span></div>
+                <div class="producto"><span class="nombre">Camamilla</span><span class="precio">1,55€</span></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
 ALL DAY
 </div>
-
-</div>
-
-<div class="main">
-
-<!-- ENTREPANS -->
-
-<div class="slide active">
-
-<div class="left">
-
-<div class="category">
-ENTREPANS
-</div>
-
-<div class="items">
-
-<div class="row"><span class="name">Pernil</span><span class="price">2,50€</span></div>
-<div class="row"><span class="name">Tonyina</span><span class="price">2,50€</span></div>
-<div class="row"><span class="name">Formatge</span><span class="price">2,50€</span></div>
-<div class="row"><span class="name">Llom</span><span class="price">3,70€</span></div>
-<div class="row"><span class="name">Pernil dolç</span><span class="price">3,20€</span></div>
-<div class="row"><span class="name">Tonyina, pebrot i olives</span><span class="price">4,70€</span></div>
-<div class="row"><span class="name">Bacon</span><span class="price">3,70€</span></div>
-<div class="row"><span class="name">Truita francesa</span><span class="price">3,40€</span></div>
-<div class="row"><span class="name">Bikini</span><span class="price">3,50€</span></div>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="image-box">
-<img src="https://picsum.photos/900iv>
-
-</div>
-
-</div>
-
-<!-- PER PICAR -->
-
-<div class="slide">
-
-<div class="left">
-
-<div class="category">
-PER PICAR
-</div>
-
-<div class="items">
-
-<div class="row"><span class="name">Patates Chips</span><span class="price">1,85€</span></div>
-<div class="row"><span class="name">Croquetes casolanes</span><span class="price">2,20€</span></div>
-<div class="row"><span class="name">Pizza del dia</span><span class="price">3,70€</span></div>
-<div class="row"><span class="name">Amanida del dia</span><span class="price">4,80€</span></div>
-
-<div class="subtitle">
-EL RACÓ DOLÇ
-</div>
-
-<div class="row"><span class="name">Croissant</span><span class="price">1,80€</span></div>
-<div class="row"><span class="name">Croissant xocolata</span><span class="price">2,10€</span></div>
-<div class="row"><span class="name">Ensaimada</span><span class="price">2,00€</span></div>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="image-box">
-https://picsum.photos/900/700?2
-</div>
-
-</div>
-
-</div>
-
-<!-- BEGUDES -->
-
-<div class="slide">
-
-<div class="left">
-
-<div class="category">
-BEGUDES
-</div>
-
-<div class="items">
-
-<div class="row"><span class="name">Aigua mineral</span><span class="price">1,30€</span></div>
-<div class="row"><span class="name">Aigua amb gas</span><span class="price">1,80€</span></div>
-<div class="row"><span class="name">Refresc</span><span class="price">2,20€</span></div>
-<div class="row"><span class="name">Cervesa sense alcohol</span><span class="price">2,20€</span></div>
-<div class="row"><span class="name">Sucs de fruita</span><span class="price">2,20€</span></div>
-<div class="row"><span class="name">Cacaolat</span><span class="price">2,10€</span></div>
-<div class="row"><span class="name">Suc taronja natural</span><span class="price">3,10€</span></div>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="image-box">
-https://picsum.photos/900/700?3
-</div>
-
-</div>
-
-</div>
-
-<!-- CAFES -->
-
-<div class="slide">
-
-<div class="left">
-
-<div class="category purple">
-CAFÈS · TÈ · INFUSIONS
-</div>
-
-<div class="items">
-
-<div class="row"><span class="name">Cafè sol</span><span class="price">1,50€</span></div>
-<div class="row"><span class="name">Tallat</span><span class="price">1,60€</span></div>
-<div class="row"><span class="name">Cafè amb llet</span><span class="price">1,80€</span></div>
-<div class="row"><span class="name">Capuchino</span><span class="price">2,40€</span></div>
-<div class="row"><span class="name">Latte Macchiato</span><span class="price">2,60€</span></div>
-<div class="row"><span class="name">Earl Grey</span><span class="price">1,55€</span></div>
-<div class="row"><span class="name">Rooibos</span><span class="price">1,55€</span></div>
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="image-box">
-https://picsum.photos/900/700?4
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer"></div>
 
 <script>
 
 const slides=document.querySelectorAll('.slide');
-
 let actual=0;
 
 setInterval(()=>{
 
 slides[actual].classList.remove('active');
 
-actual++;
-
-if(actual>=slides.length){
-actual=0;
-}
+actual=(actual+1)%slides.length;
 
 slides[actual].classList.add('active');
 
