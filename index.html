@@ -89,14 +89,13 @@ body {
     line-height: 1;
 }
 
-.logo-sjd {
-    display: block;
-    height: 82px;
-    width: auto;
-    max-width: 390px;
-    object-fit: contain;
-    flex-shrink: 0;
-}
+.logo-sjd{
+    position:absolute;
+    top:10px;
+    right:20px;
+    height:80px;
+    width:auto;
+    object-fit:contain;
 
 /* ZONA CENTRAL */
 
@@ -286,24 +285,25 @@ body {
 
 <body>
 
-<header class="header">
+    <div class="header">
 
     <div class="header-texto">
-
-        <div class="titulo">
-            CAFETERIA PÚBLIC
+        <div class="titulo" id="tituloSemana">
+            MENÚ CAFETERIA
         </div>
 
-        <div class="subtitulo">
+        <div class="subtitulo" id="fechaCabecera">
             Hospital Sant Joan de Déu Barcelona
         </div>
-
     </div>
 
-    SJD MARCA NEGATIU H-01.png
+<img src="SJD MARCA NEGATIU H-01.png" class="logo-sjd">
 
-</header>
+  
 
+</div>
+
+    
 <main class="main">
 
 
